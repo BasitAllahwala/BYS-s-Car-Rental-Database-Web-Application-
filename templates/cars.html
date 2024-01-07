@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Car Rental</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}" />
+    </head>
+    <body>
+        <header class="header">
+            <a href="#" class="logo"><img src="{{ url_for('static',filename='pic4.png') }}" alt="logo"></a>
+
+            <nav class="navbar">
+                <a href="/" style="--i:1;">Home</a>
+                <a href="#"style="--i:2;">About</a>
+                <a href="#"style="--i:3;">Review</a>
+                <a href="/cars"style="--i:4;" class="active" >Cars</a>
+                <a href="#"style="--i:5;">Contact</a>
+            </nav>
+            <div class="social-media">
+                <a href="#" style="--i:1;"><i class='bx bxl-facebook-square'></i></a>
+                <a href="#" style="--i:2;"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </header>
+        <div class="wrapper">
+            <div id="search-container">
+                <input type="search" id="search-input" placeholder="Search your car here...">
+                <button id="search">Search</button>
+            </div>
+            <div id="button">
+                <button class="button-value" onclick="filterCar('all')">All</button>
+                <button class="button-value" onclick="filterCar('2019')">2019</button>
+                <button class="button-value" onclick="filterCar('2020')">2020</button>
+                <button class="button-value" onclick="filterCar('2021')">2021</button>
+                <button class="button-value" onclick="filterCar('2022')">2022</button>
+                <button class="button-value" onclick="filterCar('2023')">2023</button>
+            </div>
+            <div class="price-range-container">
+                <label for="price-range">Price Range:</label>
+                <input type="range" id="price-range" name="price-range" min="0" max="10000" step="1" value="3000">
+                <p id="selected-price">Selected Price: $3000</p>
+            </div>
+            <div id="Cars"></div>
+            <div id="popup-container" class="popup-container">
+                <div class="popup-content">
+                <span class="close-btn1" id="closePopupBtn">&times;</span>
+                <h2>Book a Car</h2>
+                <form id="bookingForm">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+            
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+            
+                    <label for="location">Location:</label>
+                    <input type="text" id="location" name="location" required>
+
+                    <label for="location-address">Location Address:</label>
+                    <input type="text" id="location-address" name="location-address" required placeholder="Enter the location where you will take the car">
+            
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+            
+                    <label for="bookingDate">Booking Date:</label>
+                    <input type="date" id="bookingDate" name="bookingDate" required>
+            
+                    <label for="returnDate">Return Date:</label>
+                    <input type="date" id="returnDate" name="returnDate" required>
+
+                    <label for="Payment">Payment:</label>
+                    <input type="Payment" id="payment" name="Payment" required placeholder="XD">
+
+                    <label for="PaymentMethod">PaymentMethod:</label>
+                    <select id="paymentmethod">
+                        <option value="CreditCard">Credit Card</option>
+                        <option value="Cash">Cash</option>
+                    </select>    
+                    <button id="bt2" type="submit">Submit</button>
+                </form>
+                <div id="successModal2" class="modal2">
+                    <div class="modal-content2">
+                    <span class="close2" onclick="closeSuccessModal2()">&times;</span>
+                    <p>Congratulations , Your car has been booked.</p>
+                    </div>
+                </div> 
+                </div>
+            </div>
+        </div>
+    <script src="{{ url_for('static',filename='script.js') }}"></script>
+    </body>
+</html>
+        <!-- <div class="Car-forms">
+            <h2>Rental Cars</h2>
+            <div class="cform-element">
+                <label for="Car-Name">Car</label>
+                <input type="text" id="Name" placeholder="Enter your Car Name ">
+            </div>
+            <div class="cform-element1">
+                <label for="Car-Type">Car Type</label>
+                <select id="Type" name="cars">
+                <option value="Toyota">Toyota</option>
+                <option value="Honda">Honda</option>
+                <option value="Ford">Ford</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Subaru">Subaru</option>
+                <option value="Kia">Kia</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Mazda">Mazda</option>
+                </select>
+            </div>
+            <div class="cform-element2">
+                <label for="Phone-Number">Phone-Number</label>
+                <input type="tel" id="Phone" placeholder="e.g 0321-1234567">
+            </div>
+            <div class="cform-element3">
+                <label for="Email-Address">Email Address</label>
+                <input type="email" id="Email" placeholder="Enter your Email-Address ">
+            </div>
+            <div class="cform-element4">
+                <label for="Address">Address</label>
+                <input type="text" id="Addr" placeholder="Enter your Home Address ">
+            </div>
+            <div class="cform-element">
+                <button>Search</button>
+            </div>
+        </div> -->

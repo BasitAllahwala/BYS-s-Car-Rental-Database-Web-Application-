@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Car Rental</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}" />
+    </head>
+    <body>
+        <header class="header">
+            <a href="#" class="logo"><img src="{{ url_for('static',filename='pic4.png') }}" alt="logo"></a>
+
+            <nav class="navbar">
+                <a href="#" style="--i:1;">Home</a>
+                <a href="#about-section"style="--i:2;">About Us</a>
+                <a href="#review-section"style="--i:3;">Review</a>
+                <a href="/cars"style="--i:4;">Cars</a>
+                <a href="#contact-section"style="--i:5;">Contact</a>
+                <a href="#" style="--i:6;" class="active" >Admin</a>
+            </nav>
+            <div class="social-media">
+                <a href="#" style="--i:1;"><i class='bx bxl-facebook-square'></i></a>
+                <a href="#" style="--i:2;"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </header>
+
+        <section class="woop">
+            <div class="left-column">
+                <h2 class="table-heading">Database Tables</h2>
+                <div class="table-buttons">
+                    {% for table_name in table_names %}
+                        <button onclick="redirectToTable('{{ table_name }}')">{{ table_name }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="table-container">
+                <h2 class="table-heading">Database Table</h2>
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            {% for column in column_names %}
+                                <th>{{ column }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in rows %}
+                            <tr>
+                                {% for column, value in row.items() %}
+                                    <td data-column="{{ column }}">{{ value }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div id="search-bar">
+                <input type="text" id="search-column" placeholder="Enter Column Name">
+                <input type="text" id="search-row" placeholder="Enter Row Name">
+                <button id="bt1">Search</button>
+            </div>
+            <div id="add-button">
+                <button id="Add-button">ADD</button>
+                
+            </div>
+            <div id="del-button">
+                <button id="Del-button">Delete Car</button>
+            </div>
+            <div id="pcontainer" class="pcontainer">
+                <div class="addb-popup">
+                    <span id="cpopup" class="cpopup">&times;</span>
+                    <label for="info1">Car ID</label>
+                    <input type="number" id="cid" placeholder="Enter your Car ID here">
+                    <label for="info2">Make</label>
+                    <input type="text" id="make" placeholder="Enter your make of the car">
+                    <label for="info3">Model</label>
+                    <input type="text" id="model" placeholder="Enter the model of the car">
+                    <label for="info4">Year</label>
+                    <input type="number" id="year" placeholder="Enter your year">
+                    <label for="info5">LicensePlate</label>
+                    <input type="text" id="lplate" placeholder="Enter your License plate">
+                    <label for="info6">RentalPricePerday</label>
+                    <input type="number" id="RPP" placeholder="Enter your rental price per day">
+                    <label for="info7">Availability</label>
+                    <input type="number" id="availability" placeholder="Enter the Availability number">
+                    <button id="okButton">ADD</button>
+                </div>
+                </div>
+                <div id="pcontainer1" class="pcontainer1">
+                    <div class="addb-popup1">
+                        <span id="cpopup1" class="cpopup1">&times;</span>
+                        <label for="carid">Car ID</label>
+                        <input type="number" id="car_id" placeholder="Enter your Car ID here">
+                        <button id="okButton1">Delete</button>
+                    </div>
+            </div>
+        </section>
+        <section id="about-section" class="about-section">
+            <div class="about-content">
+            <h2>About Us</h2>
+            <p>Welcome to our automotive haven! At RentalCore, we are dedicated to providing you with the latest insights and reviews on the world of automobiles. Whether you're a car enthusiast seeking detailed reviews, a potential buyer exploring the newest models, or just someone who appreciates the beauty of automotive design, you've come to the right place. Our passion for cars drives us to deliver engaging content that covers everything from performance and technology to style and innovation. Join us on this exciting journey through the fast-paced and ever-evolving automotive landscape. Let's explore the road ahead together.</p>
+            </div>
+        </section>
+        <section id="review-section" class="review-section">
+            <div class="review-content">
+            <h2>Car Reviews</h2>
+            <div class="review-card">
+                <img src="{{ url_for('static',filename='2021-Nissan-Altima-hero.png') }}" alt="Car Image">
+                <h3>Nissan Altima 2021</h3>
+                <p>Sporty elegance embodied — the XYZ Sports Coupe marries thrilling V6 performance with a sleek, aerodynamic design for a ride that's as stylish as it is exhilarating.</p>
+            </div>
+            <div class="review-card">
+                <img src="{{ url_for('static',filename='honda-civic-2021.png') }}" alt="Car Image">
+                <h3>Honda Civic 2021</h3>
+                <p>The ABC Electric Hatchback redefines city commuting with its eco-friendly electric powertrain, compact design, and tech-savvy interior, making urban journeys efficient and enjoyable.</p>
+            </div>
+            <div class="review-card">
+                <img src="{{ url_for('static',filename='2020-Kia-Optima-MLP-Hero.png') }}" alt="Car Image">
+                <h3>Kia Optima 2020</h3>
+                <p>The LMN Family Cruiser prioritizes family comfort and safety with its spacious three-row interior, advanced safety features, and entertainment options, making it the perfect choice for family road trips.</p>
+            </div>
+            
+            </div>
+        </section>
+        <section id="contact-section" class="contact-section">
+            <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>Have questions or feedback? Reach out to us using the form below or connect with us on social media.</p>
+            <div class="contact-form">
+                <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            
+                <label for="Email">Email:</label>
+                <input type="email" id="email2" name="email" required>
+            
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            
+                <button type="submit">Submit</button>
+                </form>
+            </div>
+            
+        
+            </div>
+        <div class="popup">
+            <div class="close-btn">&times;</div>
+            <div class="form">
+                <h2>Login</h2>
+                <div class="form-element">
+                    <label for="Email">Email</label>
+                    <input type="text" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-element">
+                    <label for="Password">Password</label>
+                    <input type="password" id="password" placeholder="Enter password">
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember Me</label>
+                </div>
+                <div class="form-element">
+                    <button>Sign In</button>
+                </div>
+                <div class="form-element">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+        <div class="popup1">
+            <div class="close-btn">&times;</div>
+            <div class="form">
+                <h2>Signup</h2>
+                <div class="form-element">
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" placeholder="Enter your name">
+                </div>
+                <div class="form-element">
+                    <label for="Email">Email</label>
+                    <input type="text" id="email1" placeholder="Enter email">
+                </div>
+                <div class="form-element">
+                    <label for="Password">Password</label>
+                    <input type="password" id="password1" placeholder="Enter password">
+                </div>
+                <div class="form-element">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Remember Me</label>
+                </div>
+                <div class="form-element">
+                    <button>Create Account</button>
+                </div>
+        <script src="{{ url_for('static',filename='script2.js') }}"></script>
+    </body>
+</html>
